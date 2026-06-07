@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RemoveMarca – Remoção de Marca d'Água com IA</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header id="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <i class="fa-solid fa-wand-magic-sparkles logo-icon"></i>
+        <span class="logo-text">Remove<strong>Marca</strong></span>
+      </div>
+      <nav class="header-nav">
+        <a href="#how-it-works">Como funciona</a>
+        <a href="#tool-section" class="btn-nav">Começar agora</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero-section">
+    <div class="hero-content">
+      <span class="hero-badge"><i class="fa-solid fa-bolt"></i> Powered by IA</span>
+      <h1>Remova marcas d'água<br /><span class="gradient-text">em segundos</span></h1>
+      <p class="hero-subtitle">
+        Faça upload da sua imagem e deixe a inteligência artificial apagar
+        marcas d'água, textos e sobreposições automaticamente — sem instalar nada.
+      </p>
+      <a href="#tool-section" class="btn-hero">
+        <i class="fa-solid fa-upload"></i> Fazer upload agora
+      </a>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card before-card">
+        <span class="card-label before-label"><i class="fa-solid fa-xmark"></i> Antes</span>
+        <div class="mock-image">
+          <div class="mock-watermark">© WATERMARK</div>
+        </div>
+      </div>
+      <div class="arrow-between"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="hero-card after-card">
+        <span class="card-label after-label"><i class="fa-solid fa-check"></i> Depois</span>
+        <div class="mock-image clean">
+          <i class="fa-solid fa-star clean-icon"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section id="how-it-works">
+    <div class="section-container">
+      <h2 class="section-title">Como funciona?</h2>
+      <p class="section-subtitle">Apenas 3 passos simples para uma imagem limpa</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <div class="step-icon"><i class="fa-solid fa-image"></i></div>
+          <h3>Faça o upload</h3>
+          <p>Selecione ou arraste a imagem que contém a marca d'água.</p>
+        </div>
+        <div class="step-connector"><i class="fa-solid fa-chevron-right"></i></div>
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <div class="step-icon"><i class="fa-solid fa-microchip"></i></div>
+          <h3>IA processa</h3>
+          <p>Nossa IA analisa e remove a marca d'água automaticamente.</p>
+        </div>
+        <div class="step-connector"><i class="fa-solid fa-chevron-right"></i></div>
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <div class="step-icon"><i class="fa-solid fa-download"></i></div>
+          <h3>Baixe o resultado</h3>
+          <p>Compare antes e depois, depois baixe a imagem limpa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TOOL SECTION ===== -->
+  <section id="tool-section">
+    <div class="section-container">
+      <h2 class="section-title">Remover Marca d'Água</h2>
+      <p class="section-subtitle">Upload gratuito — sem cadastro necessário</p>
+
+      <!-- Upload Area -->
+      <div id="upload-area" class="upload-area">
+        <input type="file" id="file-input" accept="image/*" hidden />
+        <div class="upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+        <p class="upload-title">Arraste a imagem aqui</p>
+        <p class="upload-subtitle">ou clique para selecionar</p>
+        <p class="upload-hint">PNG, JPG, WEBP · até 10 MB</p>
+        <button class="btn-upload" id="btn-select-file">
+          <i class="fa-solid fa-folder-open"></i> Selecionar arquivo
+        </button>
+      </div>
+
+      <!-- Processing Panel (hidden initially) -->
+      <div id="processing-panel" class="processing-panel hidden">
+
+        <!-- Preview Row -->
+        <div class="preview-row">
+          <div class="preview-col">
+            <p class="preview-label"><i class="fa-solid fa-image"></i> Imagem original</p>
+            <div class="preview-box">
+              <img id="original-img" src="" alt="Imagem original" />
+            </div>
+          </div>
+
+          <div class="preview-divider">
+            <div class="divider-line"></div>
+            <div class="divider-icon"><i class="fa-solid fa-arrows-left-right"></i></div>
+            <div class="divider-line"></div>
+          </div>
+
+          <div class="preview-col">
+            <p class="preview-label"><i class="fa-solid fa-wand-magic-sparkles"></i> Imagem processada</p>
+            <div class="preview-box" id="result-box">
+              <!-- Placeholder -->
+              <div id="result-placeholder" class="result-placeholder">
+                <i class="fa-solid fa-hourglass-start placeholder-icon"></i>
+                <p>Aguardando processamento…</p>
+              </div>
+              <!-- Loading state -->
+              <div id="result-loading" class="result-loading hidden">
+                <div class="spinner"></div>
+                <p class="loading-text">Removendo marca d'água…</p>
+                <p class="loading-sub">Isso pode levar até 30 segundos</p>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" id="progress-bar"></div>
+                </div>
+              </div>
+              <!-- Result image -->
+              <img id="result-img" src="" alt="Imagem processada" class="hidden" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Compare Slider (shown after result) -->
+        <div id="compare-container" class="compare-container hidden">
+          <p class="compare-label"><i class="fa-solid fa-sliders"></i> Arraste para comparar</p>
+          <div class="compare-wrapper" id="compare-wrapper">
+            <img id="compare-after" src="" alt="Depois" class="compare-img compare-after" />
+            <div class="compare-before-wrap" id="compare-before-wrap">
+              <img id="compare-before" src="" alt="Antes" class="compare-img compare-before" />
+            </div>
+            <div class="compare-handle" id="compare-handle">
+              <div class="handle-line"></div>
+              <div class="handle-btn"><i class="fa-solid fa-arrows-left-right"></i></div>
+              <div class="handle-line"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="action-row">
+          <button class="btn-secondary" id="btn-new-image">
+            <i class="fa-solid fa-rotate-left"></i> Nova imagem
+          </button>
+          <button class="btn-primary" id="btn-process" onclick="processImage()">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Remover marca d'água
+          </button>
+          <a class="btn-download hidden" id="btn-download" download="imagem_sem_marca.png">
+            <i class="fa-solid fa-download"></i> Baixar imagem
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Error Toast -->
+      <div id="error-toast" class="error-toast hidden">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span id="error-msg">Ocorreu um erro.</span>
+        <button class="toast-close" onclick="hideError()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <div class="logo small">
+        <i class="fa-solid fa-wand-magic-sparkles logo-icon"></i>
+        <span class="logo-text">Remove<strong>Marca</strong></span>
+      </div>
+      <p class="footer-copy">© 2026 RemoveMarca · Remoção de marca d'água com IA</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
